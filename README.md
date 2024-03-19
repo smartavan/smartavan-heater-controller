@@ -47,7 +47,13 @@ Now you should be able to control device from ESPHome web page.
 
 ## Integrating with Home Assistant
 
-Go to Settings -> Integrations on Home Assistant. There you should see immediately the new ESPHome device. 
+Go to Settings -> Integrations on Home Assistant. There you should see immediately the new ESPHome device.
+
+## Operating without Home Assistant integration
+
+If you want to use the device without Home Assistant integration as a standalone device - or integrate it via MQTT to some other platform, modify the ESPHome config to fullfill your needs.
+
+Note: remove `api: ` line from config, as otherwise it will reboot the device every 15 minutes when there is no Home Assistant connection.
 
 ## Modifying ESPHome config
 
