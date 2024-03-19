@@ -1,0 +1,106 @@
+esphome:
+  name: "smartavan-heater"
+  name_add_mac_suffix: true
+
+external_components:
+  - source: github://Fabian-Schmidt/esphome-truma_inetbox
+    components: ["truma_inetbox", "uart"]
+    refresh: always
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+  # If you want to use ESP-IDF, comment out line above and uncomment 2 lines below
+  # Note: esp-idf support is still somewhat experimental
+  #   type: esp-idf
+  #   version: recommended
+
+captive_portal:
+
+wifi:
+  # If you want to define wifi and ip, do uncomment lines below (and)
+  # wifi:
+  #   ssid: SSIDHERRE
+  #   password: PASSHERE
+  #   manual_ip:
+  #     static_ip: 192.168.20.69
+  #     gateway: 192.168.20.1
+  #     subnet: 255.255.255.0
+  ap:
+
+logger:
+
+web_server:
+  port: 80
+  local: true
+  ota: false
+
+ota:
+
+# If you want to use MQTT for communication, uncomment these and define
+# MQTT broker details
+
+# mqtt:
+#   broker: 10.0.0.2
+#   username: livingroom
+#   password: password_here
+
+# If you are not using Home Assistant integration, then comment out api: line
+# Otherwise it will reboot every 15 minutes
+api:
+
+time:
+  - platform: homeassistant
+    id: real_time
+
+# If you are not using Home Assistant, get time from SNTP
+# time:
+#   - platform: sntp
+#     id: real_time
+#     timezone: Europe/Sofia
+
+uart:
+  - id: lin_uart_bus
+    tx_pin: 16
+    rx_pin: 17
+    baud_rate: 9600
+    data_bits: 8
+    parity: NONE
+    stop_bits: 2
+
+truma_inetbox:
+  uart_id: lin_uart_bus
+  time_id: real_time
+
+climate:
+  - platform: truma_inetbox
+    name: "Room"
+    type: ROOM
+  - platform: truma_inetbox
+    name: "Water"
+    type: WATER
+
+binary_sensor:
+  - platform: truma_inetbox
+    name: "CP Plus alive"
+    type: CP_PLUS_CONNECTED
+  - platform: truma_inetbox
+    name: "Heater has error"
+    type: HEATER_HAS_ERROR
+
+sensor:
+  - platform: truma_inetbox
+    name: "Current Room Temperature"
+    type: CURRENT_ROOM_TEMPERATURE
+  - platform: truma_inetbox
+    name: "Current Water Temperature"
+    type: CURRENT_WATER_TEMPERATURE
+
+select:
+  - platform: truma_inetbox
+    name: "Fan Mode"
+    type: HEATER_FAN_MODE_COMBI
+  - platform: truma_inetbox
+    name: "Energy Mix"
+    type: HEATER_ENERGY_MIX_GAS
