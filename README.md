@@ -33,6 +33,8 @@ If you want to define static IP address for it, modify config file accordingly.
 
 ## Enabling control from Truma CP Plus
 
+If you want to watch video how it is done, see https://www.youtube.com/shorts/HoGUFc7grXM
+
 1. Go to settings on Truma CP Plus
 2. Scroll to `RESET` and press button
 3. Press button again (selects `PR SET`)
