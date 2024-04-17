@@ -6,9 +6,8 @@ Product is available for purchase at https://shop.smartavan.com/products/smartav
 
 Device itself is connected between Truma CP Plus (this or newer "iNET READY" control panel is required).
 
-![Smartavan heater controller (front)](img/smartavan-heater-controller-front.jpg)
+![Smartavan heater controller](img/smartavan-heater-controller.jpg)
 
-![Smartavan heater controller (back)](img/smartavan-heater-controller-back.jpg)
 
 It is used to control Truma/Alde and other possibly supported RV heaters (and ACs).
 
