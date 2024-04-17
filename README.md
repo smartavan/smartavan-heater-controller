@@ -2,6 +2,8 @@
 
 This repository contains ESPHome config for Smartavan heater controller.
 
+Product is available for purchase at https://shop.smartavan.com/products/smartavan-heater-controller
+
 Device itself is connected between Truma CP Plus (this or newer "iNET READY" control panel is required).
 
 ![Smartavan heater controller (front)](img/smartavan-heater-controller-front.jpg)
