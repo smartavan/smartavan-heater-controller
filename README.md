@@ -60,7 +60,7 @@ Note: remove `api: ` line from config, as otherwise it will reboot the device ev
 
 ## Modifying ESPHome config
 
-The [config file](https://github.com/smartavan/smartavan-heater-controller/blob/main/smartavan-heater-controller.yaml) contains everything needed for the operation.
+The [config file](https://github.com/smartavan/smartavan-heater-controller/blob/main/smartavan-heater-controller-truma.yaml) contains everything needed for the operation.
 
 File is currently somewhat commented, most of the settings should be self-explanatory.
 
