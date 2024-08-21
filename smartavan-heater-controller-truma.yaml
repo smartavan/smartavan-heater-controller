@@ -37,6 +37,7 @@ web_server:
   ota: false
 
 ota:
+  platform: esphome
 
 # If you want to use MQTT for communication, uncomment these and define
 # MQTT broker details
