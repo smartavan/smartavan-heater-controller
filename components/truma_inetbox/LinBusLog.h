@@ -1,8 +1,6 @@
 #pragma once
 
 #include <stdint.h>
-
-#include <stdint.h>
 #include "esphome/core/log.h"
 
 #define truma_log(_log_msg_) xQueueSend(this->log_queue_, (void *) &_log_msg_, QUEUE_WAIT_DONT_BLOCK);
