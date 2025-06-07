@@ -29,8 +29,8 @@ StatusFrameHeaterResponse *TrumaiNetBoxAppHeater::update_prepare() {
   return &this->update_status_;
 }
 
-void TrumaiNetBoxAppHeater::create_update_data(StatusFrame *response, u_int8_t *response_len,
-                                               u_int8_t command_counter) {
+void TrumaiNetBoxAppHeater::create_update_data(StatusFrame *response, uint8_t *response_len,
+                                               uint8_t command_counter) {
   status_frame_create_empty(response, STATUS_FRAME_HEATER_RESPONSE, sizeof(StatusFrameHeaterResponse), command_counter);
 
   response->heaterResponse.target_temp_room = this->update_status_.target_temp_room;
@@ -54,7 +54,7 @@ bool TrumaiNetBoxAppHeater::can_update() {
          this->parent_->get_heater_device() != TRUMA_DEVICE::UNKNOWN;
 }
 
-bool TrumaiNetBoxAppHeater::action_heater_room(u_int8_t temperature, HeatingMode mode) {
+bool TrumaiNetBoxAppHeater::action_heater_room(uint8_t temperature, HeatingMode mode) {
   if (!this->can_update()) {
     ESP_LOGW(TAG, "Cannot update Truma.");
     return false;
@@ -94,7 +94,7 @@ bool TrumaiNetBoxAppHeater::action_heater_room(u_int8_t temperature, HeatingMode
   return true;
 }
 
-bool TrumaiNetBoxAppHeater::action_heater_water(u_int8_t temperature) {
+bool TrumaiNetBoxAppHeater::action_heater_water(uint8_t temperature) {
   if (!this->can_update()) {
     ESP_LOGW(TAG, "Cannot update Truma.");
     return false;

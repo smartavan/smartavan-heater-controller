@@ -8,7 +8,7 @@ namespace truma_inetbox {
 
 template<typename... Ts> class HeaterRoomTempAction : public Action<Ts...>, public Parented<TrumaiNetBoxApp> {
  public:
-  TEMPLATABLE_VALUE(u_int8_t, temperature)
+  TEMPLATABLE_VALUE(uint8_t, temperature)
   TEMPLATABLE_VALUE(HeatingMode, heating_mode)
 
   void play(Ts... x) override {
@@ -19,7 +19,7 @@ template<typename... Ts> class HeaterRoomTempAction : public Action<Ts...>, publ
 
 template<typename... Ts> class HeaterWaterTempAction : public Action<Ts...>, public Parented<TrumaiNetBoxApp> {
  public:
-  TEMPLATABLE_VALUE(u_int8_t, temperature)
+  TEMPLATABLE_VALUE(uint8_t, temperature)
 
   void play(Ts... x) override {
     this->parent_->get_heater()->action_heater_water(this->temperature_.value_or(x..., 0));
@@ -58,7 +58,7 @@ template<typename... Ts> class HeaterEnergyMixAction : public Action<Ts...>, pub
 
 template<typename... Ts> class AirconManualTempAction : public Action<Ts...>, public Parented<TrumaiNetBoxApp> {
  public:
-  TEMPLATABLE_VALUE(u_int8_t, temperature)
+  TEMPLATABLE_VALUE(uint8_t, temperature)
 
   void play(Ts... x) override {
     this->parent_->get_aircon_manual()->action_set_temp(this->temperature_.value_or(x..., 0));
@@ -74,9 +74,9 @@ template<typename... Ts> class TimerActivateAction : public Action<Ts...>, publi
  public:
   TEMPLATABLE_VALUE(u_int16_t, start)
   TEMPLATABLE_VALUE(u_int16_t, stop)
-  TEMPLATABLE_VALUE(u_int8_t, room_temperature)
+  TEMPLATABLE_VALUE(uint8_t, room_temperature)
   TEMPLATABLE_VALUE(HeatingMode, heating_mode)
-  TEMPLATABLE_VALUE(u_int8_t, water_temperature)
+  TEMPLATABLE_VALUE(uint8_t, water_temperature)
   TEMPLATABLE_VALUE(EnergyMix, energy_mix)
   TEMPLATABLE_VALUE(ElectricPowerLevel, watt)
 

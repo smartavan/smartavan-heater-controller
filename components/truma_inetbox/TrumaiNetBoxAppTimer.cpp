@@ -34,7 +34,7 @@ StatusFrameTimerResponse *TrumaiNetBoxAppTimer::update_prepare() {
   return &this->update_status_;
 }
 
-void TrumaiNetBoxAppTimer::create_update_data(StatusFrame *response, u_int8_t *response_len, u_int8_t command_counter) {
+void TrumaiNetBoxAppTimer::create_update_data(StatusFrame *response, uint8_t *response_len, uint8_t command_counter) {
   status_frame_create_empty(response, STATUS_FRAME_TIMER_RESPONSE, sizeof(StatusFrameTimerResponse), command_counter);
 
   response->timerResponse.timer_target_temp_room = this->update_status_.timer_target_temp_room;
@@ -61,7 +61,7 @@ void TrumaiNetBoxAppTimer::dump_data() const {
            temp_code_to_decimal(this->data_.timer_target_temp_room),
            temp_code_to_decimal(this->data_.timer_target_temp_water), this->data_.timer_start_hours,
            this->data_.timer_start_minutes, this->data_.timer_stop_hours, this->data_.timer_stop_minutes,
-           ((u_int8_t) this->data_.timer_active ? " ON" : " OFF"));
+           ((uint8_t) this->data_.timer_active ? " ON" : " OFF"));
 }
 
 bool TrumaiNetBoxAppTimer::action_timer_disable() {
@@ -77,8 +77,8 @@ bool TrumaiNetBoxAppTimer::action_timer_disable() {
   return true;
 }
 
-bool TrumaiNetBoxAppTimer::action_timer_activate(u_int16_t start, u_int16_t stop, u_int8_t room_temperature,
-                                                 HeatingMode mode, u_int8_t water_temperature, EnergyMix energy_mix,
+bool TrumaiNetBoxAppTimer::action_timer_activate(u_int16_t start, u_int16_t stop, uint8_t room_temperature,
+                                                 HeatingMode mode, uint8_t water_temperature, EnergyMix energy_mix,
                                                  ElectricPowerLevel el_power_level) {
   if (!this->can_update()) {
     ESP_LOGW(TAG, "Cannot update Truma.");

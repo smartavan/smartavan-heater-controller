@@ -51,9 +51,9 @@ void TrumaRoomClimate::control(const climate::ClimateCall &call) {
   if (call.get_target_temperature().has_value() && !call.get_fan_mode().has_value()) {
     float temp = *call.get_target_temperature();
     if (!this->parent_->get_is_alde_device()) {
-      this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp));
+      this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp));
     } else {
-      this->parent_->get_alde_satus()->action_heater_room(static_cast<u_int8_t>(temp));
+      this->parent_->get_alde_satus()->action_heater_room(static_cast<uint8_t>(temp));
     }
   }
 
@@ -98,13 +98,13 @@ void TrumaRoomClimate::control(const climate::ClimateCall &call) {
     }
     switch (fan_mode) {
       case climate::CLIMATE_FAN_LOW:
-        this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp), HeatingMode::HEATING_MODE_ECO);
+        this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp), HeatingMode::HEATING_MODE_ECO);
         break;
       case climate::CLIMATE_FAN_MEDIUM:
-        this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp), HeatingMode::HEATING_MODE_HIGH);
+        this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp), HeatingMode::HEATING_MODE_HIGH);
         break;
       case climate::CLIMATE_FAN_HIGH:
-        this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp), HeatingMode::HEATING_MODE_BOOST);
+        this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp), HeatingMode::HEATING_MODE_BOOST);
         break;
       default:
         this->parent_->get_heater()->action_heater_room(0);

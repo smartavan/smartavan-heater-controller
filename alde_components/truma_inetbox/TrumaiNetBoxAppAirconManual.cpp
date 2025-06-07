@@ -26,8 +26,8 @@ StatusFrameAirconManualResponse *TrumaiNetBoxAppAirconManual::update_prepare() {
   return &this->update_status_;
 }
 
-void TrumaiNetBoxAppAirconManual::create_update_data(StatusFrame *response, u_int8_t *response_len,
-                                                     u_int8_t command_counter) {
+void TrumaiNetBoxAppAirconManual::create_update_data(StatusFrame *response, uint8_t *response_len,
+                                                     uint8_t command_counter) {
   status_frame_create_empty(response, STATUS_FRAME_AIRCON_MANUAL_RESPONSE, sizeof(StatusFrameAirconManualResponse),
                             command_counter);
 
@@ -50,7 +50,7 @@ bool TrumaiNetBoxAppAirconManual::can_update() {
          this->parent_->get_aircon_device() != TRUMA_DEVICE::UNKNOWN;
 }
 
-bool TrumaiNetBoxAppAirconManual::action_set_temp(u_int8_t temperature) {
+bool TrumaiNetBoxAppAirconManual::action_set_temp(uint8_t temperature) {
   if (!this->can_update()) {
     ESP_LOGW(TAG, "Cannot update Truma.");
     return false;

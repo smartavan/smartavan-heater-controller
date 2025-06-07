@@ -33,8 +33,8 @@ StatusFrameAirconAutoResponse *TrumaiNetBoxAppAirconAuto::update_prepare() {
   return &this->update_status_;
 }
 
-void TrumaiNetBoxAppAirconAuto::create_update_data(StatusFrame *response, u_int8_t *response_len,
-                                                   u_int8_t command_counter) {
+void TrumaiNetBoxAppAirconAuto::create_update_data(StatusFrame *response, uint8_t *response_len,
+                                                   uint8_t command_counter) {
   status_frame_create_empty(response, STATUS_FRAME_AIRCON_AUTO_RESPONSE, sizeof(StatusFrameAirconAutoResponse),
                             command_counter);
 

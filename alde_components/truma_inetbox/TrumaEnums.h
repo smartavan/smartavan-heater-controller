@@ -82,7 +82,7 @@ enum class TargetTemp : u_int16_t {
   TARGET_TEMP_AIRCON_AUTO_MAX = (25 + 273) * 10,
 };
 
-enum class EnergyMix : u_int8_t {
+enum class EnergyMix : uint8_t {
   ENERGY_MIX_NONE = 0b00,
   ENERGY_MIX_GAS = 0b01,
   ENERGY_MIX_DIESEL = 0b01,
@@ -90,7 +90,7 @@ enum class EnergyMix : u_int8_t {
   ENERGY_MIX_MIX = 0b11,
 };
 
-enum class OperatingStatus : u_int8_t {
+enum class OperatingStatus : uint8_t {
   OPERATING_STATUS_UNSET = 0x0,
   OPERATING_STATUS_OFF = 0x0,
   OPERATING_STATUS_WARNING = 0x1,
@@ -103,43 +103,43 @@ enum class OperatingStatus : u_int8_t {
   OPERATING_STATUS_ON_9 = 0x9,
 };
 
-enum class OperatingUnits : u_int8_t {
+enum class OperatingUnits : uint8_t {
   OPERATING_UNITS_CELSIUS = 0x0,
   OPERATING_UNITS_FAHRENHEIT = 0x1,
 };
 
-enum class Language : u_int8_t {
+enum class Language : uint8_t {
   LANGUAGE_GERMAN = 0x0,
   LANGUAGE_ENGLISH = 0x1,
   LANGUAGE_FRENCH = 0x2,
   LANGUAGE_ITALY = 0x3,
 };
 
-enum class ResponseAckResult : u_int8_t {
+enum class ResponseAckResult : uint8_t {
   RESPONSE_ACK_RESULT_OKAY = 0x0,
   RESPONSE_ACK_RESULT_ERROR_INVALID_MSG = 0x2,
   // The response status frame `message_type` is unknown.
   RESPONSE_ACK_RESULT_ERROR_INVALID_ID = 0x3,
 };
 
-enum class ClockMode : u_int8_t {
+enum class ClockMode : uint8_t {
   CLOCK_MODE_24H = 0x0,
   CLOCK_MODE_12H = 0x1,
 };
 
-enum class TimerActive : u_int8_t {
+enum class TimerActive : uint8_t {
   TIMER_ACTIVE_ON = 0x1,
   TIMER_ACTIVE_OFF = 0x0,
 };
 
-enum class ClockSource : u_int8_t {
+enum class ClockSource : uint8_t {
   // Set by user
   CLOCK_SOURCE_MANUAL = 0x1,
   // Set by message
   CLOCK_SOURCE_PROG = 0x2,
 };
 
-enum class TRUMA_DEVICE : u_int8_t {
+enum class TRUMA_DEVICE : uint8_t {
   UNKNOWN = 0x00,
 
   // Saphir Compact AC
@@ -160,19 +160,19 @@ enum class TRUMA_DEVICE : u_int8_t {
   HEATER_COMBI6D = 0x06,
 };
 
-enum class TRUMA_DEVICE_STATE : u_int8_t {
+enum class TRUMA_DEVICE_STATE : uint8_t {
   OFFLINE = 0x00,
   ONLINE = 0x01,
 };
 
-enum class AirconMode : u_int8_t {
+enum class AirconMode : uint8_t {
   // Auto - 18 to 25
   OFF = 0x00,
   AC_VENTILATION = 0x04,
   AC_COOLING = 0x05,
 };
 
-enum class AirconOperation : u_int8_t {
+enum class AirconOperation : uint8_t {
   AC_ONLY = 0x71,
   // Heater and Aircon
   AUTO = 0x72,

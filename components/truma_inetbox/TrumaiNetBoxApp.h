@@ -24,8 +24,8 @@ class TrumaiNetBoxApp : public LinBusProtocol {
   TrumaiNetBoxApp();
   void update() override;
 
-  const std::array<u_int8_t, 4> lin_identifier() override;
-  const std::array<u_int8_t, 3> lin_identifier_version() override;
+  const std::array<uint8_t, 4> lin_identifier() override;
+  const std::array<uint8_t, 3> lin_identifier_version() override;
   void lin_heartbeat() override;
   void lin_reset_device() override;
 
@@ -60,10 +60,10 @@ class TrumaiNetBoxApp : public LinBusProtocol {
   uint32_t device_registered_ = 0;
   uint32_t init_requested_ = 0;
   // Two stage init. First send null. Next request devices.
-  u_int8_t init_state_ = 0;
-  u_int8_t init_state_debug_ = 0;
+  uint8_t init_state_ = 0;
+  uint8_t init_state_debug_ = 0;
   uint32_t init_recieved_ = 0;
-  u_int8_t message_counter = 1;
+  uint8_t message_counter = 1;
 
   // Truma heater conected to CP Plus.
   TRUMA_DEVICE heater_device_ = TRUMA_DEVICE::UNKNOWN;
@@ -77,7 +77,7 @@ class TrumaiNetBoxApp : public LinBusProtocol {
   TrumaiNetBoxAppTimer timer_;
   TrumaiNetBoxAppAldeStatus alde_status_;
 
-  u_int8_t log_update_debug_counter_ = 0;
+  uint8_t log_update_debug_counter_ = 0;
   Heater_Combi_PID_20 heater_combi_pid_20_ = {};
   Heater_Combi_PID_21 heater_combi_pid_21_ = {};
   Heater_Combi_PID_22 heater_combi_pid_22_ = {};
@@ -101,12 +101,12 @@ class TrumaiNetBoxApp : public LinBusProtocol {
 #endif  // USE_TIME
   bool is_alde_device_ = false;
 
-  bool answer_lin_order_(const u_int8_t pid) override;
-  void lin_message_slave_observed_non_queue_(const u_int8_t pid, const u_int8_t *message, u_int8_t length) override;
+  bool answer_lin_order_(const uint8_t pid) override;
+  void lin_message_slave_observed_non_queue_(const uint8_t pid, const uint8_t *message, uint8_t length) override;
 
-  u_int8_t lin_read_field_by_identifier_(u_int8_t identifier, std::array<u_int8_t, 5> *response) override;
-  const u_int8_t *lin_multiframe_recieved(const u_int8_t *message, const u_int8_t message_len,
-                                          u_int8_t *return_len) override;
+  uint8_t lin_read_field_by_identifier_(uint8_t identifier, std::array<uint8_t, 5> *response) override;
+  const uint8_t *lin_multiframe_recieved(const uint8_t *message, const uint8_t message_len,
+                                          uint8_t *return_len) override;
 
   bool has_update_to_submit_();
 };

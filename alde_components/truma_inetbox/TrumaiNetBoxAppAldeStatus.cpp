@@ -36,8 +36,8 @@ StatusFrameAldeStatusResponse *TrumaiNetBoxAppAldeStatus::update_prepare() {
   return &this->update_status_;
 }
 
-void TrumaiNetBoxAppAldeStatus::create_update_data(StatusFrame *response, u_int8_t *response_len,
-                                                   u_int8_t command_counter) {
+void TrumaiNetBoxAppAldeStatus::create_update_data(StatusFrame *response, uint8_t *response_len,
+                                                   uint8_t command_counter) {
   status_frame_create_empty(response, STATUS_FRAME_ALDE_STATUS_RESPONSE, sizeof(StatusFrameAldeStatusResponse),
                             command_counter);
 
@@ -70,7 +70,7 @@ bool TrumaiNetBoxAppAldeStatus::can_update() {
          this->parent_->get_is_alde_device();
 }
 
-bool TrumaiNetBoxAppAldeStatus::action_heater_room(u_int8_t temperature) {
+bool TrumaiNetBoxAppAldeStatus::action_heater_room(uint8_t temperature) {
   if (!this->can_update()) {
     ESP_LOGW(TAG, "Cannot update Alde.");
     return false;
@@ -83,7 +83,7 @@ bool TrumaiNetBoxAppAldeStatus::action_heater_room(u_int8_t temperature) {
   return true;
 }
 
-// bool TrumaiNetBoxAppAldeStatus::action_heater_water(u_int8_t temperature) {
+// bool TrumaiNetBoxAppAldeStatus::action_heater_water(uint8_t temperature) {
 //   if (!this->can_update()) {
 //     ESP_LOGW(TAG, "Cannot update Truma.");
 //     return false;

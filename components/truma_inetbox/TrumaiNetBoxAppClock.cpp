@@ -39,7 +39,7 @@ bool TrumaiNetBoxAppClock::action_write_time() {
   return true;
 }
 
-void TrumaiNetBoxAppClock::create_update_data(StatusFrame *response, u_int8_t *response_len, u_int8_t command_counter) {
+void TrumaiNetBoxAppClock::create_update_data(StatusFrame *response, uint8_t *response_len, uint8_t command_counter) {
   if (this->parent_->get_time() != nullptr) {
     ESP_LOGD(TAG, "Requested read: Sending clock update");
     // read time live

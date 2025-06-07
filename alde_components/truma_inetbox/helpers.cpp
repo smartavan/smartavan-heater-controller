@@ -3,15 +3,15 @@
 namespace esphome {
 namespace truma_inetbox {
 
-u_int8_t addr_parity(const u_int8_t PID) {
-  u_int8_t P0 = ((PID >> 0) + (PID >> 1) + (PID >> 2) + (PID >> 4)) & 1;
-  u_int8_t P1 = ~((PID >> 1) + (PID >> 3) + (PID >> 4) + (PID >> 5)) & 1;
+uint8_t addr_parity(const uint8_t PID) {
+  uint8_t P0 = ((PID >> 0) + (PID >> 1) + (PID >> 2) + (PID >> 4)) & 1;
+  uint8_t P1 = ~((PID >> 1) + (PID >> 3) + (PID >> 4) + (PID >> 5)) & 1;
   return (P0 | (P1 << 1));
 }
 
 // sum = 0 LIN 1.X CRC, sum = PID LIN 2.X CRC Enhanced
-u_int8_t data_checksum(const u_int8_t *message, u_int8_t length, uint16_t sum) {
-  for (u_int8_t i = 0; i < length; i++) {
+uint8_t data_checksum(const uint8_t *message, uint8_t length, uint16_t sum) {
+  for (uint8_t i = 0; i < length; i++) {
     sum += message[i];
 
     if (sum >= 256)
@@ -29,11 +29,11 @@ float temp_code_to_decimal(u_int16_t val, float zero) {
 
 float temp_code_to_decimal(TargetTemp val, float zero) { return temp_code_to_decimal((u_int16_t) val, zero); }
 
-TargetTemp decimal_to_temp(u_int8_t val) { return (TargetTemp) ((((u_int16_t) val) + 273) * 10); }
+TargetTemp decimal_to_temp(uint8_t val) { return (TargetTemp) ((((u_int16_t) val) + 273) * 10); }
 
 TargetTemp decimal_to_temp(float val) { return (TargetTemp) ((val + 273) * 10); }
 
-TargetTemp decimal_to_room_temp(u_int8_t val) {
+TargetTemp decimal_to_room_temp(uint8_t val) {
   if (val == 0) {
     return TargetTemp::TARGET_TEMP_OFF;
   }
@@ -59,7 +59,7 @@ TargetTemp decimal_to_room_temp(float val) {
   return decimal_to_temp(val);
 }
 
-TargetTemp decimal_to_aircon_manual_temp(u_int8_t val) {
+TargetTemp decimal_to_aircon_manual_temp(uint8_t val) {
   if (val == 0) {
     return TargetTemp::TARGET_TEMP_OFF;
   }
@@ -85,7 +85,7 @@ TargetTemp decimal_to_aircon_manual_temp(float val) {
   return decimal_to_temp(val);
 }
 
-TargetTemp decimal_to_aircon_auto_temp(u_int8_t val) {
+TargetTemp decimal_to_aircon_auto_temp(uint8_t val) {
   if (val == 0) {
     return TargetTemp::TARGET_TEMP_OFF;
   }
@@ -111,7 +111,7 @@ TargetTemp decimal_to_aircon_auto_temp(float val) {
   return decimal_to_temp(val);
 }
 
-TargetTemp decimal_to_water_temp(u_int8_t val) {
+TargetTemp decimal_to_water_temp(uint8_t val) {
   if (val < 40) {
     return TargetTemp::TARGET_TEMP_OFF;
   } else if (val >= 40 && val < 60) {

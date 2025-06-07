@@ -94,23 +94,23 @@ void TrumaHeaterSelect::control(const std::string &value) {
         case TRUMA_SELECT_TYPE_HEATER_FAN_MODE::ECO:
           // case TRUMA_SELECT_TYPE_HEATER_FAN_MODE::VARIO_HEAT_NIGHT:
           if (heater_device == TRUMA_DEVICE::CPPLUS_VARIO) {
-            this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp),
+            this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp),
                                                          HeatingMode::HEATING_MODE_VARIO_HEAT_NIGHT);
           } else {
-            this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp), HeatingMode::HEATING_MODE_ECO);
+            this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp), HeatingMode::HEATING_MODE_ECO);
           }
           break;
         case TRUMA_SELECT_TYPE_HEATER_FAN_MODE::COMBI_HIGH:
           // case TRUMA_SELECT_TYPE_HEATER_FAN_MODE::VARIO_HEAT_AUTO:
           if (heater_device == TRUMA_DEVICE::CPPLUS_VARIO) {
-            this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp),
+            this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp),
                                                          HeatingMode::HEATING_MODE_VARIO_HEAT_AUTO);
           } else {
-            this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp), HeatingMode::HEATING_MODE_HIGH);
+            this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp), HeatingMode::HEATING_MODE_HIGH);
           }
           break;
         case TRUMA_SELECT_TYPE_HEATER_FAN_MODE::BOOST:
-          this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(temp), HeatingMode::HEATING_MODE_BOOST);
+          this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(temp), HeatingMode::HEATING_MODE_BOOST);
           break;
         default:
           this->parent_->get_heater()->action_heater_room(0, HeatingMode::HEATING_MODE_OFF);

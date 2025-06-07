@@ -22,7 +22,7 @@ void TrumaAirconManualNumber::setup() {
 void TrumaAirconManualNumber::control(float value) {
   switch (this->type_) {
     case TRUMA_NUMBER_TYPE::AIRCON_MANUAL_TEMPERATURE:
-      this->parent_->get_aircon_manual()->action_set_temp(static_cast<u_int8_t>(value));
+      this->parent_->get_aircon_manual()->action_set_temp(static_cast<uint8_t>(value));
       break;
     default:
       break;
