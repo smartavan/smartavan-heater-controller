@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "enum.h"
 #include "esphome/components/number/number.h"
 #include "esphome/components/truma_inetbox/TrumaiNetBoxApp.h"

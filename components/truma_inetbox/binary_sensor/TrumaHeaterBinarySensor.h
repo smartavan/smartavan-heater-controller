@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "esphome/components/binary_sensor/binary_sensor.h"
 #include "esphome/components/truma_inetbox/TrumaiNetBoxApp.h"
 #include "enum.h"

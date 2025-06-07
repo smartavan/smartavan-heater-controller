@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "TrumaEnums.h"
 #include "TrumaEnumsAlde.h"
 #include "esphome/core/helpers.h"

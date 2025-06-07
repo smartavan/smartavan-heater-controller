@@ -1,4 +1,6 @@
 #pragma once
+
+#include <stdint.h>
 #include "esphome/core/defines.h"
 #ifdef USE_UART_DEBUGGER
 

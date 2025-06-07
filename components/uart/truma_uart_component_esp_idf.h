@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_ESP_IDF
 
 #include "uart_component_esp_idf.h"

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "TrumaStausFrameStorage.h"
 #include "TrumaStructs.h"
 #include "TrumaStructsAlde.h"

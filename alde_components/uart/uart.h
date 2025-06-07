@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <vector>
 #include "esphome/core/component.h"
 #include "esphome/core/hal.h"

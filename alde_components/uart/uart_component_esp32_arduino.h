@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_ESP32_FRAMEWORK_ARDUINO
 
 #include <HardwareSerial.h>

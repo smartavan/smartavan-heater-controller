@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_ESP8266
 
 #include <HardwareSerial.h>

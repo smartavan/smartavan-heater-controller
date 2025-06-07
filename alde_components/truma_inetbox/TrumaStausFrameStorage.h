@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "esphome/core/automation.h"
 
 namespace esphome {

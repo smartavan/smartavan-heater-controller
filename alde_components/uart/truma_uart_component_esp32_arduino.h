@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_ESP32_FRAMEWORK_ARDUINO
 
 #include "uart_component_esp32_arduino.h"

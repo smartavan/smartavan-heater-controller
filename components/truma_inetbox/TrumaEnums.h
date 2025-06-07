@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "esphome/core/helpers.h"
 
 namespace esphome {

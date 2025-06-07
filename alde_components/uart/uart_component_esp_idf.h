@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_ESP_IDF
 
 #include <driver/uart.h>

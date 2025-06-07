@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "uart.h"
 #include "esphome/core/automation.h"
 

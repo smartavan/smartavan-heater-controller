@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_RP2040
 
 #include <SerialPIO.h>

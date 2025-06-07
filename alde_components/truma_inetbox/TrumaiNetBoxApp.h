@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "LinBusProtocol.h"
 #include "TrumaStructs.h"
 #include "TrumaiNetBoxAppAirconAuto.h"

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifdef USE_RP2040
 
 #include "uart_component_rp2040.h"

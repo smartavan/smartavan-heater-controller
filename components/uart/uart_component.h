@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <vector>
 #include <cstring>
 #include "esphome/core/defines.h"
