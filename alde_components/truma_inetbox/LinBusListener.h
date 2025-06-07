@@ -28,9 +28,9 @@ namespace truma_inetbox {
 enum class LIN_CHECKSUM { LIN_CHECKSUM_VERSION_1, LIN_CHECKSUM_VERSION_2 };
 
 struct QUEUE_LIN_MSG {
-  u_int8_t current_PID;
-  u_int8_t data[8];
-  u_int8_t len;
+  uint8_t current_PID;
+  uint8_t data[8];
+  uint8_t len;
 };
 
 class LinBusListener : public PollingComponent, public uart::UARTDevice {
@@ -61,20 +61,20 @@ class LinBusListener : public PollingComponent, public uart::UARTDevice {
   GPIOPin *fault_pin_ = nullptr;
   bool observer_mode_ = false;
 
-  void write_lin_answer_(const u_int8_t *data, u_int8_t len);
+  void write_lin_answer_(const uint8_t *data, uint8_t len);
   bool check_for_lin_fault_();
-  virtual bool answer_lin_order_(const u_int8_t pid) = 0;
-  virtual void lin_message_recieved_(const u_int8_t pid, const u_int8_t *message, u_int8_t length) = 0;
-  virtual void lin_message_slave_observed_non_queue_(const u_int8_t pid, const u_int8_t *message, u_int8_t length) = 0;
+  virtual bool answer_lin_order_(const uint8_t pid) = 0;
+  virtual void lin_message_recieved_(const uint8_t pid, const uint8_t *message, uint8_t length) = 0;
+  virtual void lin_message_slave_observed_non_queue_(const uint8_t pid, const uint8_t *message, uint8_t length) = 0;
 
  private:
   // Microseconds per UART Baud
   u_int32_t time_per_baud_;
   // 9.. 15
-  const u_int8_t lin_break_length = 13;
+  const uint8_t lin_break_length = 13;
   // Microseconds per LIN Break
   u_int32_t time_per_lin_break_;
-  const u_int8_t frame_length_ = (8 /* bits */ + 1 /* Start bit */ + 2 /* Stop bits */);
+  const uint8_t frame_length_ = (8 /* bits */ + 1 /* Start bit */ + 2 /* Stop bits */);
   // Microseconds per UART Byte (UART Frame)
   u_int32_t time_per_pid_;
   // Microseconds per UART Byte (UART Frame)
@@ -82,7 +82,7 @@ class LinBusListener : public PollingComponent, public uart::UARTDevice {
   // Microseconds per UART Byte (UART Frame)
   u_int32_t time_per_byte_;
 
-  u_int8_t fault_on_lin_bus_reported_ = 0;
+  uint8_t fault_on_lin_bus_reported_ = 0;
   bool can_write_lin_answer_ = false;
 
   enum read_state {
@@ -93,13 +93,13 @@ class LinBusListener : public PollingComponent, public uart::UARTDevice {
     READ_STATE_ACT,
   };
   read_state current_state_ = READ_STATE_BREAK;
-  u_int8_t current_PID_with_parity_ = 0x00;
-  u_int8_t current_PID_ = 0x00;
+  uint8_t current_PID_with_parity_ = 0x00;
+  uint8_t current_PID_ = 0x00;
   bool current_PID_order_answered_ = false;
   bool current_data_valid = true;
-  u_int8_t current_data_count_ = 0;
+  uint8_t current_data_count_ = 0;
   // up to 8 byte data frame + CRC
-  u_int8_t current_data_[9] = {};
+  uint8_t current_data_[9] = {};
   // // Time when the last LIN data was available.
   uint32_t last_data_recieved_ = 0;
 
@@ -142,7 +142,7 @@ class LinBusListener : public PollingComponent, public uart::UARTDevice {
   static void uartEventTask_(void *args);
 #endif  // USE_ESP32_FRAMEWORK_ESP_IDF
 #ifdef USE_RP2040
-  u_int8_t uart_number_ = 0;
+  uint8_t uart_number_ = 0;
   uart_inst_t *uart_ = nullptr;
 #endif  // USE_RP2040
 };

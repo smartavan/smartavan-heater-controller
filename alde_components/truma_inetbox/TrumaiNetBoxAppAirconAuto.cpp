@@ -3,6 +3,7 @@
 #include "esphome/core/log.h"
 #include "helpers.h"
 #include "TrumaiNetBoxApp.h"
+#include <stdint.h>
 
 namespace esphome {
 namespace truma_inetbox {
