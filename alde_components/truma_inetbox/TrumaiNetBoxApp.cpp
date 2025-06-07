@@ -110,7 +110,7 @@ const std::array<uint8_t, 4> TrumaiNetBoxApp::lin_identifier() {
   // DE.41.02.01
 }
 
-const std::array<u_int8_t, 3> TrumaiNetBoxApp::lin_identifier_version() { return {0x02, 0x0E, 0x00}; }
+const std::array<uint8_t, 3> TrumaiNetBoxApp::lin_identifier_version() { return {0x02, 0x0E, 0x00}; }
 
 void TrumaiNetBoxApp::lin_heartbeat() { this->device_registered_ = micros(); }
 
@@ -132,12 +132,12 @@ void TrumaiNetBoxApp::lin_reset_device() {
   this->update_time_ = 0;
 }
 
-bool TrumaiNetBoxApp::answer_lin_order_(const u_int8_t pid) {
+bool TrumaiNetBoxApp::answer_lin_order_(const uint8_t pid) {
   // Timinig critical function. No direct log in here.
 
   // Alive message
   if (pid == LIN_PID_TRUMA_INET_BOX) {
-    std::array<u_int8_t, 8> response = this->lin_empty_response_;
+    std::array<uint8_t, 8> response = this->lin_empty_response_;
 
     if (!this->is_alde_device_) {
       if (this->updates_to_send_.empty() && !this->has_update_to_submit_()) {
@@ -152,14 +152,14 @@ bool TrumaiNetBoxApp::answer_lin_order_(const u_int8_t pid) {
         response[0] = 0xFE;
       }
     }
-    this->write_lin_answer_(response.data(), (u_int8_t) sizeof(response));
+    this->write_lin_answer_(response.data(), (uint8_t) sizeof(response));
     return true;
   }
   return LinBusProtocol::answer_lin_order_(pid);
 }
 
-void TrumaiNetBoxApp::lin_message_slave_observed_non_queue_(const u_int8_t pid, const u_int8_t *message,
-                                                            u_int8_t length) {
+void TrumaiNetBoxApp::lin_message_slave_observed_non_queue_(const uint8_t pid, const uint8_t *message,
+                                                            uint8_t length) {
   // TRUMA Combi
   if (pid == 0x20 && length >= sizeof(Heater_Combi_PID_20)) {
     std::memcpy(&this->heater_combi_pid_20_, message, sizeof(Heater_Combi_PID_20));
@@ -190,7 +190,7 @@ void TrumaiNetBoxApp::lin_message_slave_observed_non_queue_(const u_int8_t pid, 
     }
 }
 
-u_int8_t TrumaiNetBoxApp::lin_read_field_by_identifier_(u_int8_t identifier, std::array<u_int8_t, 5> *response) {
+uint8_t TrumaiNetBoxApp::lin_read_field_by_identifier_(uint8_t identifier, std::array<uint8_t, 5> *response) {
   if (identifier == 0x00 /* LIN Product Identification */) {
     auto lin_identifier = this->lin_identifier();
     (*response)[0] = lin_identifier[0];
@@ -214,15 +214,15 @@ u_int8_t TrumaiNetBoxApp::lin_read_field_by_identifier_(u_int8_t identifier, std
   return 0;
 }
 
-const u_int8_t *TrumaiNetBoxApp::lin_multiframe_recieved(const u_int8_t *message, const u_int8_t message_len,
-                                                         u_int8_t *return_len) {
-  static u_int8_t response[sizeof(StatusFrame)] = {};
+const uint8_t *TrumaiNetBoxApp::lin_multiframe_recieved(const uint8_t *message, const uint8_t message_len,
+                                                         uint8_t *return_len) {
+  static uint8_t response[sizeof(StatusFrame)] = {};
   // Validate message prefix.
   if (message_len < truma_message_header.size()) {
     ESP_LOGE(TAG, "Message header too short.");
     return nullptr;
   }
-  for (u_int8_t i = 1; i < truma_message_header.size() - 3; i++) {
+  for (uint8_t i = 1; i < truma_message_header.size() - 3; i++) {
     if (i == 4) {
       // Ignore 5.byte
     } else if (message[i] != truma_message_header[i]) {
@@ -443,7 +443,7 @@ const u_int8_t *TrumaiNetBoxApp::lin_multiframe_recieved(const u_int8_t *message
     }
     ESP_LOGD(TAG, "StatusFrameResponseAck %02X %s %02X", statusFrame->genericHeader.command_counter,
              data.error_code == ResponseAckResult::RESPONSE_ACK_RESULT_OKAY ? " OKAY " : " FAILED ",
-             (u_int8_t) data.error_code);
+             (uint8_t) data.error_code);
 
     if (data.error_code != ResponseAckResult::RESPONSE_ACK_RESULT_OKAY) {
       // I tried to update something and it failed. Read current state again to validate and hold any updates for now.
@@ -555,7 +555,7 @@ const u_int8_t *TrumaiNetBoxApp::lin_multiframe_recieved(const u_int8_t *message
              temp_code_to_decimal(statusFrame->aldeStatus.target_temp_room), statusFrame->aldeStatus.message_counter,
              temp_code_to_decimal(statusFrame->aldeStatus.current_temp_inside),
              temp_code_to_decimal(statusFrame->aldeStatus.current_temp_outside),
-             ((u_int8_t) statusFrame->aldeStatus.el_mode) * 100,
+             ((uint8_t) statusFrame->aldeStatus.el_mode) * 100,
              statusFrame->aldeStatus.gas_mode == GasModeAlde::GAS_MODE_ALDE_OFF ? "OFF" : "ON");
     this->alde_status_.set_status(statusFrame->aldeStatus);
     return response;

@@ -32,7 +32,7 @@ void TrumaHeaterNumber::setup() {
       //   this->publish_state(temp_code_to_decimal(status_alde->target_temp_water, 0));
       //   break;
       case TRUMA_NUMBER_TYPE::ELECTRIC_POWER_LEVEL:
-        this->publish_state(static_cast<float>(((u_int8_t) status_alde->el_mode) * 100));
+        this->publish_state(static_cast<float>(((uint8_t) status_alde->el_mode) * 100));
         break;
       default:
         break;
@@ -44,13 +44,13 @@ void TrumaHeaterNumber::control(float value) {
   switch (this->type_) {
     case TRUMA_NUMBER_TYPE::TARGET_ROOM_TEMPERATURE:
       if (!this->parent_->get_is_alde_device()) {
-        this->parent_->get_heater()->action_heater_room(static_cast<u_int8_t>(value));
+        this->parent_->get_heater()->action_heater_room(static_cast<uint8_t>(value));
       } else {
-        this->parent_->get_alde_satus()->action_heater_room(static_cast<u_int8_t>(value));
+        this->parent_->get_alde_satus()->action_heater_room(static_cast<uint8_t>(value));
       }
       break;
     case TRUMA_NUMBER_TYPE::TARGET_WATER_TEMPERATURE:
-      this->parent_->get_heater()->action_heater_water(static_cast<u_int8_t>(value));
+      this->parent_->get_heater()->action_heater_water(static_cast<uint8_t>(value));
       break;
     case TRUMA_NUMBER_TYPE::ELECTRIC_POWER_LEVEL:
       this->parent_->get_heater()->action_heater_electric_power_level(static_cast<u_int16_t>(value));

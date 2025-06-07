@@ -10,11 +10,11 @@ class TrumaiNetBoxAppAirconManual
     : public TrumaStausFrameResponseStorage<StatusFrameAirconManual, StatusFrameAirconManualResponse> {
  public:
   StatusFrameAirconManualResponse *update_prepare() override;
-  void create_update_data(StatusFrame *response, u_int8_t *response_len, u_int8_t command_counter) override;
+  void create_update_data(StatusFrame *response, uint8_t *response_len, uint8_t command_counter) override;
   void dump_data() const override;
   bool can_update() override;
 
-  bool action_set_temp(u_int8_t temperature);
+  bool action_set_temp(uint8_t temperature);
 };
 
 }  // namespace truma_inetbox

@@ -18,7 +18,7 @@ class TrumaTime : public time::RealTimeClock, public Parented<TrumaiNetBoxApp> {
 
  protected:
   bool auto_disable_ = false;
-  u_int8_t auto_disable_count_ = 3;
+  uint8_t auto_disable_count_ = 3;
 
  private:
 };
